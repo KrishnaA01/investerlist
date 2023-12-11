@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from "./components/Navbar";
+import { v4 as uuidv4 } from 'uuid';
+
 import './App.css';
 
 
@@ -7,36 +9,43 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
-  const url = "https://jsonplaceholder.typicode.com/users";
 
-  const fetchInfo = () => {
-    return fetch(url)
-      .then((res) => res.json())
-      .then((d) => setData(d))
+
+  const getData=()=>{
+    fetch('mock.json'
+    ,{
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }
+    )
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+        setData(myJson)
+      });
   }
 
-  useEffect(() => {
-    fetchInfo();
-  }, []);
+  useEffect(()=>{
+    getData()
+  },[])
 
-  // const arrayDataItems = devices.map(item => 
-  //   <li key={item.id}>
-  //     <p>{item.deviceName}</p>
-  //     <span>{item.description}</span>
-  //   </li>
-  // )
 
 
   return (
     <>
       <Navbar /> 
-      {data.map((dataObj, index) => {
-          return (
-            <div key={dataObj.id}>
-              <p>{dataObj.name}</p>
-            </div>
-          );
-        })}
+      <h2>Inventory Dashboard</h2>
+      <ul>
+        {
+        data && data.length>0 && data.map((item)=><li key={uuidv4()}>{item.Hersteller}</li>)
+        }
+      </ul>
+      
     </>
   )
 }
