@@ -5,8 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      transparent: 'transparent',
+      blue: '#006fb4',
+      red: '#e1001a',
+      grey: '#787878',
+    },
+    fontFamily: {
+
+    }
   },
-  plugins: [],
+  // eslint-disable-next-line no-undef
+  plugins: [require('daisyui')],
 }
 
