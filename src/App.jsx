@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import Table from "./components/Table";
 
 import "./App.css";
-import Table from "./components/Table";
 
 function App() {
   const [data, setData] = useState([
@@ -18,10 +18,13 @@ function App() {
     hersteller: "",
   });
 
+  // handles add row into table
   const handleAddRow = () => {
     setData([...data, { id: data.length + 1, ...newRow }]);
     setNewRow({ benutzer: "", gerätename: "", hersteller: "" });
   };
+
+  //handles deleting
 
   const handleDeleteRow = (id) => {
     setData(data.filter((row) => row.id !== id));
@@ -31,6 +34,7 @@ function App() {
     setEditingRow(id);
   };
 
+  //handles edited info
   const handleSaveEdit = (id, updatedData) => {
     setData(
       data.map((row) => (row.id === id ? { ...row, ...updatedData } : row))
@@ -70,7 +74,9 @@ function App() {
               setNewRow({ ...newRow, hersteller: e.target.value })
             }
           />
-          <button onClick={handleAddRow}>Add Row</button>
+          <button className="btn btn-outline btn-info" onClick={handleAddRow}>
+            Add Row
+          </button>
         </div>
       </div>
     </>

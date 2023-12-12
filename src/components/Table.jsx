@@ -20,7 +20,7 @@ export default function Table({
           </tr>
         </thead>
         <tbody>
-          {/* row 1 */}
+          {/* row  */}
           {data.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
@@ -48,6 +48,7 @@ export default function Table({
               <td>
                 {editingRow === row.id ? (
                   <button
+                    className="btn btn-outline btn-info"
                     onClick={() =>
                       handleSaveEdit(row.id, {
                         benutzer: "updated",
@@ -60,9 +61,17 @@ export default function Table({
                   </button>
                 ) : (
                   <>
-                    <button onClick={() => handleEditRow(row.id)}>Edit</button>
-                    <button onClick={() => handleDeleteRow(row.id)}>
-                      Delete
+                    <button
+                      className="mr-2 btn btn-outline btn-info"
+                      onClick={() => handleEditRow(row.id)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-outline btn-secondary"
+                      onClick={() => handleDeleteRow(row.id)}
+                    >
+                      X
                     </button>
                   </>
                 )}
