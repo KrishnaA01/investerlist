@@ -8,6 +8,7 @@ function App() {
   const [data, setData] = useState([
     { id: 1, benutzer: "Lange", gerätename: "EEG076", hersteller: "Dell" },
     { id: 2, benutzer: "Nsair", gerätename: "EEG104", hersteller: "Microsoft" },
+    { id: 3, benutzer: "John", gerätename: "EEG151", hersteller: "Microsoft" },
   ]);
 
   const [editingRow, setEditingRow] = useState(null);
@@ -25,13 +26,13 @@ function App() {
   };
 
   //handles deleting
-
   const handleDeleteRow = (id) => {
     setData(data.filter((row) => row.id !== id));
   };
 
   const handleEditRow = (id) => {
     setEditingRow(id);
+    console.log("handledit=>", id);
   };
 
   //handles edited info
@@ -46,7 +47,7 @@ function App() {
     <>
       <Navbar />
       <div className="flex justify-center items-center flex-col mt-20">
-        <h4 className="font-bold text-gray-600">Inventory Records</h4>
+        <h4 className="font-bold text-gray-600 text-lg">Inventory Records</h4>
         <Table
           data={data}
           editingRow={editingRow}

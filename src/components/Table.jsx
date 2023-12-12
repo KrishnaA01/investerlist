@@ -9,10 +9,10 @@ export default function Table({
 
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table text-lg">
         {/* head */}
         <thead>
-          <tr>
+          <tr className="text-lg">
             <th></th>
             <th>Benutzer</th>
             <th>Gerätename</th>
