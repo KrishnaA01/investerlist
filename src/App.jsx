@@ -56,11 +56,13 @@ function App() {
         />
         <div>
           <input
+            className="input input-bordered mr-2"
             placeholder="Benutzer"
             value={newRow.benutzer}
             onChange={(e) => setNewRow({ ...newRow, benutzer: e.target.value })}
           />
           <input
+            className="input input-bordered mr-2"
             placeholder="Gerätename"
             value={newRow.gerätename}
             onChange={(e) =>
@@ -68,6 +70,7 @@ function App() {
             }
           />
           <input
+            className="input input-bordered mr-2"
             placeholder="Hersteller"
             value={newRow.hersteller}
             onChange={(e) =>
