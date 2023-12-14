@@ -29,6 +29,7 @@ const Table = () => {
               <td>
                 {editingRow === row.id ? (
                   <input
+                    type="text"
                     value={newRow.benutzer}
                     onChange={(e) =>
                       setNewRow({ ...newRow, benutzer: e.target.value })
@@ -41,6 +42,7 @@ const Table = () => {
               <td>
                 {editingRow === row.id ? (
                   <input
+                    type="text"
                     value={newRow.gerätename}
                     onChange={(e) =>
                       setNewRow({ ...newRow, gerätename: e.target.value })
@@ -53,6 +55,7 @@ const Table = () => {
               <td>
                 {editingRow === row.id ? (
                   <input
+                    type="text"
                     value={newRow.hersteller}
                     onChange={(e) =>
                       setNewRow({ ...newRow, hersteller: e.target.value })
