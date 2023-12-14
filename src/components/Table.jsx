@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MyContext } from "../MyContext";
+import { useState, useEffect } from "react";
 
 const Table = () => {
   const {
@@ -11,8 +12,34 @@ const Table = () => {
     handleEditRow,
     handleDeleteRow,
   } = useContext(MyContext);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState(data);
+
+  useEffect(() => {
+    const filteredResults = data.filter(
+      (item) =>
+        item.benutzer.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.gerätename.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.hersteller.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setSearchResults(filteredResults);
+  }, [searchTerm, data]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className="overflow-x-auto">
+      <input
+        className="input input-bordered mr-2"
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
       <table className="table text-lg">
         <thead>
           <tr className="text-lg">
@@ -23,7 +50,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {searchResults.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>

@@ -12,10 +12,6 @@ function App() {
     { id: 2, benutzer: "Nsair", gerätename: "EEG104", hersteller: "Microsoft" },
     { id: 3, benutzer: "John", gerätename: "EEG151", hersteller: "Microsoft" },
     { id: 4, benutzer: "Mike", gerätename: "EEG153", hersteller: "Lenovo" },
-    { id: 5, benutzer: "Lange", gerätename: "EEG076", hersteller: "Dell" },
-    { id: 6, benutzer: "Nsair", gerätename: "EEG104", hersteller: "Microsoft" },
-    { id: 7, benutzer: "John", gerätename: "EEG151", hersteller: "Microsoft" },
-    { id: 8, benutzer: "Mike", gerätename: "EEG153", hersteller: "Lenovo" },
   ]);
 
   const [newRow, setNewRow] = useState({
