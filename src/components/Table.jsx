@@ -1,16 +1,19 @@
-export default function Table({
-  data,
-  editingRow,
-  handleDeleteRow,
-  handleEditRow,
-  handleSaveEdit,
-}) {
-  console.log("from table", data);
+import { useContext } from "react";
+import { MyContext } from "../MyContext";
 
+const Table = () => {
+  const {
+    data,
+    editingRow,
+    newRow,
+    setNewRow,
+    handleSaveEdit,
+    handleEditRow,
+    handleDeleteRow,
+  } = useContext(MyContext);
   return (
     <div className="overflow-x-auto">
       <table className="table text-lg">
-        {/* head */}
         <thead>
           <tr className="text-lg">
             <th></th>
@@ -20,27 +23,41 @@ export default function Table({
           </tr>
         </thead>
         <tbody>
-          {/* row  */}
           {data.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>
                 {editingRow === row.id ? (
-                  <input value={row.benutzer} />
+                  <input
+                    value={newRow.benutzer}
+                    onChange={(e) =>
+                      setNewRow({ ...newRow, benutzer: e.target.value })
+                    }
+                  />
                 ) : (
                   row.benutzer
                 )}
               </td>
               <td>
                 {editingRow === row.id ? (
-                  <input value={row.gerätename} />
+                  <input
+                    value={newRow.gerätename}
+                    onChange={(e) =>
+                      setNewRow({ ...newRow, gerätename: e.target.value })
+                    }
+                  />
                 ) : (
                   row.gerätename
                 )}
               </td>
               <td>
                 {editingRow === row.id ? (
-                  <input value={row.hersteller} />
+                  <input
+                    value={newRow.hersteller}
+                    onChange={(e) =>
+                      setNewRow({ ...newRow, hersteller: e.target.value })
+                    }
+                  />
                 ) : (
                   row.hersteller
                 )}
@@ -49,13 +66,7 @@ export default function Table({
                 {editingRow === row.id ? (
                   <button
                     className="btn btn-outline btn-info"
-                    onClick={() =>
-                      handleSaveEdit(row.id, {
-                        benutzer: "updated",
-                        gerätename: "updated",
-                        hersteller: "updated",
-                      })
-                    }
+                    onClick={() => handleSaveEdit(row.id)}
                   >
                     Save
                   </button>
@@ -82,4 +93,6 @@ export default function Table({
       </table>
     </div>
   );
-}
+};
+
+export default Table;
